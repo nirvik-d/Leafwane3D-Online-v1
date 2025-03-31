@@ -6,6 +6,10 @@
  - Open an Internet browser and enter `localhost:5173`.
  
  **Alternative**
- -
+ - https://leafwane3-d-online-v1.vercel.app/
  
- ![image](https://github.com/user-attachments/assets/eccf0714-c92c-464c-8789-7ab6f23494f3)
+![image](https://github.com/user-attachments/assets/e47c90a8-a22c-4e0f-aeeb-cff446a3de12)
+
+**Uploaded models - glTF and glb only**
+![image](https://github.com/user-attachments/assets/f3d32e72-bc90-4664-a41a-5f90eabeb948)
+
