@@ -1,5 +1,5 @@
 import React from "react";
-import { FC, useState } from "react";
+import { useState } from "react";
 
 interface BuildUIProps {
   modelUrl: string;
@@ -8,12 +8,12 @@ interface BuildUIProps {
   onRotationChange: (axis: "x" | "y" | "z", value: number) => void;
 }
 
-const BuildUI: FC<BuildUIProps> = ({
+export function BuildUI({
   modelUrl,
   onModelChange,
   rotation,
   onRotationChange,
-}) => {
+}: BuildUIProps) {
   const [models, setModels] = useState({
     Shiba: "/assets/shiba.glb",
     Raptor: "/assets/raptor.glb",
@@ -122,6 +122,4 @@ const BuildUI: FC<BuildUIProps> = ({
       </div>
     </div>
   );
-};
-
-export default BuildUI;
+}

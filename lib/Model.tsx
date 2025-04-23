@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { useMemo } from "react";
 import { ShaderMaterial, Mesh, Texture } from "three";
 
-function useShaders(texture: Texture) {
+export function useShaders(texture: Texture) {
   return new ShaderMaterial({
     vertexShader: `
       varying vec2 vUV;
@@ -31,7 +31,7 @@ interface DrawModelProps {
   rotation: { x: number; y: number; z: number };
 }
 
-function DrawModel({ modelUrl, rotation }: DrawModelProps) {
+export function DrawModel({ modelUrl, rotation }: DrawModelProps) {
   const { nodes, materials } = useGLTF(modelUrl);
 
   const shaderMaterials = useMemo(() => {
@@ -74,5 +74,3 @@ function DrawModel({ modelUrl, rotation }: DrawModelProps) {
     </group>
   );
 }
-
-export default DrawModel;

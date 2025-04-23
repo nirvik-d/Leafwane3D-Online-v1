@@ -2,8 +2,8 @@ import * as THREE from "three";
 import { Canvas, extend, ThreeToJSXElements } from "@react-three/fiber";
 import { Suspense, useState } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
-import BuildUI from "./UI";
-import DrawModel from "./Model";
+import { BuildUI } from "./UI";
+import { DrawModel } from "./Model";
 
 declare module "@react-three/fiber" {
   interface ThreeElements extends ThreeToJSXElements<typeof THREE> {}
