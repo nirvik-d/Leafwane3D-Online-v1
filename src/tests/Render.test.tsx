@@ -1,11 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import RenderCanvas from "../../lib/Render";
-
-vi.mock("react", () => ({
-  useState: vi.fn().mockReturnValue([{}, vi.fn()]),
-  Suspense: vi.fn(),
-  spy: true,
-}));
+import { render, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 vi.mock("@react-three/fiber", () => ({
   Canvas: vi.fn(),
@@ -23,8 +19,10 @@ beforeEach(() => {
 });
 
 describe("Render component", () => {
-  it("should render the canvas for threeJS", () => {
-    const result = RenderCanvas();
-    expect(result).toBeDefined();
+  it("should render the canvas for threeJS", async () => {
+    const result = render(<RenderCanvas />);
+    await waitFor(() => {
+      expect(result).toBeDefined();
+    });
   });
 });

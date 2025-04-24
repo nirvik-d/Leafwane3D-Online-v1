@@ -1,6 +1,8 @@
 import { ShaderMaterial, Texture } from "three";
 import { useShaders, DrawModel } from "../../lib/Model";
 import { describe, it, expect, beforeEach, vi } from "vitest";
+import { render, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 vi.mock("@react-three/drei", () => ({
   useGLTF: vi.fn().mockReturnValue({
@@ -19,16 +21,6 @@ vi.mock("@react-three/drei", () => ({
   spy: true,
 }));
 
-vi.mock("react", () => ({
-  useMemo: vi.fn().mockReturnValue({
-    shaderMaterials: {
-      key: "mock-string",
-      value: new ShaderMaterial(),
-    },
-  }),
-  spy: true,
-}));
-
 beforeEach(() => {
   vi.clearAllMocks();
 });
@@ -41,11 +33,12 @@ describe("Model Component", () => {
     expect(shaderMaterial).toBeInstanceOf(ShaderMaterial);
   });
 
-  it("should draw the model to the canvas. Accepts url and rotation", () => {
-    const drawModel = DrawModel({
-      modelUrl: "mock-model.glb",
-      rotation: { x: 0, y: 0, z: 0 },
+  it("should draw the model to the canvas. Accepts url and rotation", async () => {
+    const drawModel = render(
+      <DrawModel modelUrl="mock-url" rotation={{ x: 0, y: 0, z: 0 }} />
+    );
+    await waitFor(() => {
+      expect(drawModel).toBeDefined();
     });
-    expect(drawModel).toBeDefined();
   });
 });
